@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $ok = false;
     } elseif (!is_numeric($so1)) {
         $arrLoi["err_so1"] = "vui lòng nhập số";
+        $ok = false;
     } else {
         $arrLoi["err_so1"] = null;
         $ok = true;
@@ -23,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $ok = false;
     } elseif (!is_numeric($so2)) {
         $arrLoi["err_so2"] = "vui lòng nhập số";
+        $ok = false;
     } else {
         $arrLoi["err_so2"] = null;
         $ok = true;
@@ -74,12 +76,6 @@ function chia($s1, $s2)
         margin: 0;
         padding: 0;
         display: flex;
-    }
-
-    .nut {
-        display: flex;
-        flex-direction: row;
-        margin-top: 5px;
     }
 
     input[type="submit"] {
