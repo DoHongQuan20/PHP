@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 70%;
+    margin: auto;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.hang1 {
+    background-color: rgb(58, 93, 190);
+}
+
+.hang1 td {
+    font-weight: bold;
+}
+
+td a {
+    text-decoration: none;
+    color: #0066cc;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+td img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
