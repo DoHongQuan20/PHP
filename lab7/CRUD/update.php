@@ -1,5 +1,5 @@
 <?php
-include "conect.php";
+include "connect.php";
 $thongbao ="";
 //kiểm tra xem form đã được submit hay chưa trong trường hợp lưu
 if (isset($_POST['submit'])) {

@@ -1,5 +1,5 @@
 <?php
-include "conect.php" ;
+include "connect.php" ;
 //truy vấn danh sách các sản phẩm
 $query = "SELECT * FROM sanpham";
 $result = mysqli_query($conn ,$query);
