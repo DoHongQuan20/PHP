@@ -1,9 +1,8 @@
 <?php
 include "connect.php";
 
-$errorMassange = "";
-$successMassange = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$thongbao = "";
+
     if (isset($_POST['submit'])) {
         $name = $_POST["name"];
         $description = $_POST["description"];
@@ -11,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         do {
             if (empty($name) || empty($description) || empty($price)) {
-                $errorMassange = "Hãy điền hết tất cả các trường dữ liệu";
+                $thongbao = "Hãy điền hết tất cả các trường dữ liệu";
                 break;
             }
             //add new client to database
@@ -20,16 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $result = mysqli_query($conn, $query);
 
             if ($result) {
-                $successMassange = "Thêm thành công";
+                $thongbao = "Thêm thành công";
             }else{
-                $errorMassange = "Invalid query :" . $conn->error;
+                $thongbao = "Invalid query :" . $conn->error;
                 break;
             }
 
-            header("location: read.php");
+           
         } while (false);
     }
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     .container {
-        max-width: 400px;
+        max-width: 500px;
         margin: 0 auto;
         padding: 20px;
         border-radius: 5px;
@@ -56,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         text-align: center;
     }
 
-    form {
+    .doc {
         display: flex;
         flex-direction: column;
     }
@@ -89,7 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         padding: 10px 20px;
         border-radius: 5px;
         cursor: pointer;
-        font-size: large;
+        font-size: medium;
+        width: 460px;
     }
 
 
@@ -97,58 +97,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         background-color: #0056b3;
     }
 
-    .cancel {
-        height: 40px;
-        width: 360px;
-        background-color: red;
-        text-align: center;
-        border-radius: 5px;
-        margin-bottom: 30px;
-    }
-
-    a {
-        color: white;
-        text-decoration: none;
-        margin-bottom: 30px;
-        font-size: medium;
-
-    }
-
-    a:hover {
-        background-color: red;
-    }
 </style>
 
 <body>
     <div class="container my-5">
         <h2>Thêm sản phẩm</h2><br>
-        <?php
-        if (!empty($errorMassange)) {
-            echo "
-            <div class = 'alert alert-warning alert-dismissible fade show' role='alert'>
-            <strong>$errorMassange</strong>
-            <button type='button' class = 'btn-close' data-bs-dismiss ='alert' aria-label='Close'></button>
-            </div>";
-        }
-        ?>
         <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
-            <label for="name"> Tên Sản phẩm</label>
-            <input type="text" name="name" required><br>
-            <label for="description">Mô tả</label>
-            <input type="text" name="description" required><br>
-            <label for="price">Giá</label>
-            <input type="number" name="price" required><br>
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <div class="doc">
+                <label for="name"> Tên Sản phẩm</label>
+                <input type="text" name="name"  required><br>
+            </div>
+            <div class="doc">
+                <label for="description">Mô tả</label>
+                <input type="text" name="description"  required><br>
+            </div>
+            <div class="doc">
+                <label for="price">Giá</label>
+                <input type="number" name="price"  required><br>
+            </div>
             <?php
-            if (!empty($successMassange)) {
+            if (!empty($thongbao)) {
                 echo "
             <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
-            <strong>$successMassange</strong>
+            <strong>$thongbao</strong>
             <button type='button' class = 'btn-close' data-bs-dismiss ='alert' aria-label='Close'></button>
             </div>";
             }
             ?>
-            <input type="submit" name="submit" value="create"><br>
-            <a class="cancel" href="read.php" role="button">Cancel</a>
+            <input type="submit" name="submit" value="Thêm sản phẩm"><br><br>
+            <a class="btn btn-danger " href="read.php" style="width: 460px;">Trở về trang sản phẩm</a>
 
         </form>
     </div>

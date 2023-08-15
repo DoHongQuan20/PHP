@@ -36,7 +36,7 @@ $result = mysqli_query($conn ,$query);
             echo "<td>" . $row['description'] . "</td>" ;
             echo "<td>" . $row['price'] . "</td>" ;
             echo "<td>" ;
-            echo "<a class='btn btn-primary btn-sm' href='update.php?id=".(int)($row['id'])."' >Sửa</a> " ;
+            echo "<a class='btn btn-success btn-sm' href='update.php?id=".(int)($row['id'])."' >Sửa</a> " ;
             echo "<a class='btn btn-danger btn-sm' href='delete.php?id=".(int)($row['id'])."'>xoá</a> " ;
             echo "<tr>" ;
         }
