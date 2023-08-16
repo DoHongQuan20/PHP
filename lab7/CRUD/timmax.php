@@ -2,7 +2,7 @@
 include "connect.php";
 
 // Truy vấn sản phẩm có giá cao nhất
-$query = "SELECT * FROM sanpham ORDER BY price DESC LIMIT 1";
+$query = "SELECT * FROM sanpham ORDER BY price DESC LIMIT 1";//thấp nhất DESC -> ASC
 $result = mysqli_query($conn, $query);
 
 ?>

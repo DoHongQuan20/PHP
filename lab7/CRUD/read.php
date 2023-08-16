@@ -23,7 +23,7 @@ $result = mysqli_query($conn ,$query);
             <th>Tên sản phẩm</th>
             <th>Mô tả</th>
             <th>Giá</th>
-            <th colspan="2"></th>
+            <th colspan="2"> </th>
         </tr>
         </thead>
         <tbody>
